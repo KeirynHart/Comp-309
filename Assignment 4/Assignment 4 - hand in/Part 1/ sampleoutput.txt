@@ -1,0 +1,66 @@
+Linear regression:
+coefficients:  [ 5.11432796e-03  1.06524125e+04  1.27265673e+02  3.06160702e+02
+  3.72835470e+02 -8.06752989e+01 -2.81078165e+01 -8.33539554e+02
+  2.48995494e+01 -1.91907434e+01]
+intercept:  3138.5246568301427
+MSE:  1603591.70
+RMSE: 1266.33
+r2:  0.90
+MAE:  824.08
+K-neighbours regression:
+MSE:  56342.18
+RMSE: 237.37
+r2:  0.997
+MAE:  17.64
+Ridge Regression:
+MSE:  1603583.40
+RMSE: 1266.33
+r2:  0.90
+MAE:  824.54
+decision Tree Regression:
+MSE:  1881412.36
+RMSE: 1371.65
+r2:  0.88
+MAE:  915.17
+Random Forest Regression:
+MSE:  1824077.58
+RMSE: 1350.58
+r2:  0.89
+MAE:  901.43
+Gradient Boost Regression:
+MSE:  51293.66
+RMSE: 226.48
+r2:  0.997
+MAE:  125.06
+SGD Regression:
+MSE:  1612405.44
+RMSE: 1269.81
+r2:  0.90
+MAE:  829.02
+SVR Regression:
+MSE:  8126705.05
+RMSE: 2850.74
+r2:  0.50
+MAE:  1338.80
+Linear SVR Regression:
+MSE:  2516693.59
+RMSE: 1586.41
+r2:  0.84
+MAE:  854.06
+Multilayer Perceptron Regression:
+MSE:  498109.19
+RMSE: 705.77
+r2:  0.97
+MAE:  460.94
+
+	Name			MSE		RMSE	r2	MAE
+0	linear regression	1603591.70	1266.33	0.901	824.08
+1	k-neighbors regression	56342.18	237.37	0.997	17.64
+2	Ridge regression	1603583.40	1266.33	0.901	824.54
+3	decision tree regression	1881412.36	1371.65	0.884	915.17
+4	random forest regression	1824077.58	1350.58	0.888	901.43
+5	gradient Boosting regression	51293.66	226.48	0.997	125.06
+6	SGD regression	1612405.44	1269.81	0.901	829.02
+7	support vector regression	8126705.05	2850.74	0.499	1338.80
+8	linear SVR	2516693.59	1586.41	0.845	854.06
+9	multi-layer perceptron regression	498109.19	705.77	0.969	460.94

@@ -1,0 +1,168 @@
+{
+	"flow_name" : "assignment 2 - merge",
+	"steps" : [
+		{
+			"class" : "weka.knowledgeflow.steps.Loader",
+			"properties" : {
+				"loader" : {
+					"type" : "loader",
+					"class" : "weka.core.converters.CSVLoader",
+					"filePath" : "/Users/keirynhart/Documents/Uni/Comp 309/Assignment 2/homeless_impact_SanBenito.csv",
+					"useRelativePath" : false,
+					"options" : "-format \"yyyy-MM-dd\\'T\\'HH:mm:ss\" -M ? -B 100 -E \"\\\",\\'\" -F ,"
+				},
+				"name" : "CSVLoader"
+			},
+			"connections" : {
+				"dataSet" : [
+					"Remove"
+				]
+			},
+			"coordinates" : "215,24"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.Loader",
+			"properties" : {
+				"loader" : {
+					"type" : "loader",
+					"class" : "weka.core.converters.CSVLoader",
+					"filePath" : "/Users/keirynhart/Documents/Uni/Comp 309/Assignment 2/covid.csv",
+					"useRelativePath" : false,
+					"options" : "-format \"yyyy-MM-dd\\'T\\'HH:mm:ss\" -M ? -B 100 -E \"\\\",\\'\" -F ,"
+				},
+				"name" : "CSVLoader2"
+			},
+			"connections" : {
+				"dataSet" : [
+					"Remove2"
+				]
+			},
+			"coordinates" : "358,15"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.Filter",
+			"properties" : {
+				"filter" : {
+					"type" : "optionHandler",
+					"class" : "weka.filters.unsupervised.instance.RemoveRange",
+					"options" : "-R 10,11"
+				},
+				"name" : "RemoveRange"
+			},
+			"connections" : {
+				"dataSet" : [
+					"Join"
+				]
+			},
+			"coordinates" : "213,314"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.Filter",
+			"properties" : {
+				"filter" : {
+					"type" : "optionHandler",
+					"class" : "weka.filters.unsupervised.instance.RemoveRange",
+					"options" : "-R 1-16,26,27,63,64,70,71,77,78,84,85,91,92,98,99,105,106,112,113,119,120,126,127"
+				},
+				"name" : "RemoveRange2"
+			},
+			"connections" : {
+				"dataSet" : [
+					"Join"
+				]
+			},
+			"coordinates" : "468,314"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.Filter",
+			"properties" : {
+				"filter" : {
+					"type" : "optionHandler",
+					"class" : "weka.filters.unsupervised.attribute.ReplaceMissingValues",
+					"options" : ""
+				},
+				"name" : "ReplaceMissingValues"
+			},
+			"connections" : {
+				"dataSet" : [
+					"RemoveRange2"
+				]
+			},
+			"coordinates" : "470,145"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.Join",
+			"properties" : {
+				"keySpec" : "date@@KS@@todays_date",
+				"name" : "Join"
+			},
+			"connections" : {
+				"dataSet" : [
+					"Remove3",
+					"TextViewer3"
+				]
+			},
+			"coordinates" : "334,314"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.Filter",
+			"properties" : {
+				"filter" : {
+					"type" : "optionHandler",
+					"class" : "weka.filters.unsupervised.attribute.Remove",
+					"options" : "-R 1"
+				},
+				"name" : "Remove"
+			},
+			"connections" : {
+				"dataSet" : [
+					"RemoveRange"
+				]
+			},
+			"coordinates" : "215,169"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.Filter",
+			"properties" : {
+				"filter" : {
+					"type" : "optionHandler",
+					"class" : "weka.filters.unsupervised.attribute.Remove",
+					"options" : "-R 1"
+				},
+				"name" : "Remove2"
+			},
+			"connections" : {
+				"dataSet" : [
+					"ReplaceMissingValues"
+				]
+			},
+			"coordinates" : "468,17"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.Filter",
+			"properties" : {
+				"filter" : {
+					"type" : "optionHandler",
+					"class" : "weka.filters.unsupervised.attribute.Remove",
+					"options" : "-R 6,7"
+				},
+				"name" : "Remove3"
+			},
+			"connections" : {
+				"dataSet" : [
+					"TextViewer3"
+				]
+			},
+			"coordinates" : "405,447"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.TextViewer",
+			"properties" : {
+				"name" : "TextViewer3"
+			},
+			"connections" : {
+			},
+			"coordinates" : "261,446"
+		}
+	]
+}
